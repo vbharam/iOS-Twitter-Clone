@@ -14,6 +14,7 @@ class Tweet {
     private var _time: String!
     private var _body: String!
     private var _profilePic: String!
+    private var _inlinePic: String!
     private var _replyCount: Int!
     private var _retweetCount: Int!
     private var _favCount: Int!
@@ -39,6 +40,10 @@ class Tweet {
         return _profilePic == nil ? "" : _profilePic
     }
     
+    var inlinePic: String {
+        return _inlinePic == nil ? "" : _inlinePic
+    }
+    
     var replyCount: Int {
         return _replyCount == nil ? 0 : _replyCount
     }
@@ -52,12 +57,13 @@ class Tweet {
     }
     
     
-    init(name: String, handle: String, time: String, body: String, profilePic: String, replyCount: Int, retweetCount: Int, favCount: Int) {
+    init(name: String, handle: String, time: String, body: String, profilePic: String, inlinePic: String, replyCount: Int, retweetCount: Int, favCount: Int) {
         self._name = name
         self._handle = handle
         self._time = time
         self._body = body
         self._profilePic = profilePic
+        self._inlinePic = inlinePic
         self._replyCount = replyCount
         self._retweetCount = retweetCount
         self._favCount = favCount

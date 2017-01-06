@@ -16,10 +16,10 @@ let USER_TIMELINE_URL = "statuses/user_timeline.json"
 typealias DownloadComplete = () -> ()
 
 let dummyTweet = Tweet(name: "Vishal", handle: "@vbharam91", time:
-    "Tue Jan 03 03:00:04 +0000 2017", body: "This is the world beyond the border. This is the world beyond the border. This is the world beyond the border", profilePic: "default_profile", replyCount:34, retweetCount: 654, favCount: 92)
+    "Tue Jan 03 03:00:04 +0000 2017", body: "This is the world beyond the border. This is the world beyond the border. This is the world beyond the border", profilePic: "", inlinePic:"", replyCount:34, retweetCount: 654, favCount: 92)
 
 let dummyTweet1 = Tweet(name: "Vishal", handle: "@vbharam91", time:
-    "Tue Jan 03 03:00:04 +0000 2017", body: "This is the world beyond the border.", profilePic: "https://pbs.twimg.com/profile_images/718131815672721408/fLdxx6Mo_400x400.jpg", replyCount:42, retweetCount: 345, favCount: 87)
+    "Tue Jan 03 03:00:04 +0000 2017", body: "This is the world beyond the border.", profilePic: "https://pbs.twimg.com/profile_images/718131815672721408/fLdxx6Mo_400x400.jpg", inlinePic:"https://pbs.twimg.com/profile_images/718131815672721408/fLdxx6Mo_400x400.jpg", replyCount:42, retweetCount: 345, favCount: 87)
 
 
 // Dummy Data:
