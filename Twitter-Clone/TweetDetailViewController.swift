@@ -25,11 +25,16 @@ class TweetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.setUpTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // print("Pic -> \(tweet.inlinePic)")
+        self.tableView.reloadData()
+    }
+    
     func setUpTableView() {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140.0
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -47,6 +52,23 @@ class TweetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             return UITableViewCell()
         }
+    }
+    
+    @IBAction func showAlert(_ sender: Any) {
+        let alertController = UIAlertController(title: "Reply to", message: "", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Tweet", style: .default, handler: {
+            alert -> Void in
+            let textField = alertController.textFields![0] as UITextField
+            // do something with textField
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alertController.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
+            textField.placeholder = "Tweet (140 characters)"
+        })
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     

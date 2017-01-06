@@ -22,8 +22,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         
         self.setUpTableView()
-
     }
+
     
     func setUpTableView() {
         self.tableView.rowHeight = UITableViewAutomaticDimension

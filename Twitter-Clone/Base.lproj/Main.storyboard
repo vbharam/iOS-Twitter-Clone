@@ -254,19 +254,23 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Uhx-L3-9xq">
-                                                    <rect key="frame" x="10" y="413.5" width="349" height="12"/>
+                                                    <rect key="frame" x="10" y="405.5" width="349" height="20"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dGV-0u-cnU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="12"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply" translatesAutoresizingMaskIntoConstraints="NO" id="sHF-wF-JwI">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPF-vu-8wx">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" secondItem="sHF-wF-JwI" secondAttribute="height" multiplier="1:1" id="fKs-kN-ncy"/>
+                                                                        <constraint firstAttribute="width" secondItem="KPF-vu-8wx" secondAttribute="height" multiplier="1:1" id="1Ap-sW-MDP"/>
                                                                     </constraints>
-                                                                </imageView>
+                                                                    <state key="normal" title="Button" image="reply"/>
+                                                                    <connections>
+                                                                        <action selector="showAlert:" destination="Em0-YQ-V4R" eventType="touchUpInside" id="tTf-DV-Sl5"/>
+                                                                    </connections>
+                                                                </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0S-AR-7sZ">
-                                                                    <rect key="frame" x="16" y="0.0" width="16" height="12"/>
+                                                                    <rect key="frame" x="24" y="1" width="16" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -274,17 +278,17 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="fa9-OF-ZPe">
-                                                            <rect key="frame" x="148.5" y="0.0" width="49.5" height="12"/>
+                                                            <rect key="frame" x="142.5" y="0.0" width="61.5" height="20"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEl-ep-9dR">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="18" height="12"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="EEl-ep-9dR" secondAttribute="height" multiplier="3:2" id="Jfa-aM-8Ae"/>
                                                                     </constraints>
                                                                     <state key="normal" title="Button" image="retweet"/>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="232" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-Dc-Mlf">
-                                                                    <rect key="frame" x="24" y="0.0" width="25.5" height="12"/>
+                                                                    <rect key="frame" x="36" y="1.5" width="25.5" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -292,17 +296,17 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="LKb-HI-WZH">
-                                                            <rect key="frame" x="312.5" y="0.0" width="36.5" height="12"/>
+                                                            <rect key="frame" x="304.5" y="0.0" width="44.5" height="20"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pP-U3-n8W">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="5pP-U3-n8W" secondAttribute="height" multiplier="1:1" id="1Zm-E1-83B"/>
                                                                     </constraints>
                                                                     <state key="normal" title="Button" image="love"/>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pm-c2-XlC">
-                                                                    <rect key="frame" x="18" y="0.0" width="18.5" height="12"/>
+                                                                    <rect key="frame" x="26" y="1" width="18.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -311,11 +315,11 @@
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="12" id="NIl-NO-kQ5"/>
+                                                        <constraint firstAttribute="height" constant="20" id="NIl-NO-kQ5"/>
                                                     </constraints>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q2u-my-THZ">
-                                                    <rect key="frame" x="10" y="142.5" width="349" height="255"/>
+                                                    <rect key="frame" x="10" y="142.5" width="349" height="247"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSm-fS-dSb" userLabel="Time Label">
                                                     <rect key="frame" x="10" y="104.5" width="37" height="18"/>
@@ -350,7 +354,7 @@
                                             <outlet property="bodyLabel" destination="Gg8-3H-8QD" id="XMy-Gv-L2k"/>
                                             <outlet property="favCount" destination="9pm-c2-XlC" id="xIJ-G3-lnc"/>
                                             <outlet property="handleLabel" destination="U9m-fo-dd9" id="LkH-Ei-r9x"/>
-                                            <outlet property="inlineImageView" destination="q2u-my-THZ" id="K1a-8S-fwX"/>
+                                            <outlet property="inlineImageView" destination="q2u-my-THZ" id="tKz-de-zTk"/>
                                             <outlet property="nameLabel" destination="Nwv-Up-c5T" id="nUo-dG-qMY"/>
                                             <outlet property="profilePicImageView" destination="1Eu-gY-fKT" id="1ig-5O-9yo"/>
                                             <outlet property="replyCount" destination="u0S-AR-7sZ" id="BYD-xd-wKE"/>
