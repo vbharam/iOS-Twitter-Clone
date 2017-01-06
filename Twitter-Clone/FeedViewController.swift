@@ -49,5 +49,31 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             return UITableViewCell()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let tweet: Tweet = tweets[indexPath.row]
+        
+        /*
+         let detailsVC = TweetDetailViewController()
+         detailsVC.tweet = tweet
+         
+         self.navigationController?.pushViewController(detailsVC, animated: true)
+         */
+        
+        performSegue(withIdentifier: "TweetDetailVC", sender: tweet)
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TweetDetailVC" {
+            if let detailsVC = segue.destination as? TweetDetailViewController {
+                if let tweet = sender as! Tweet? {
+                    detailsVC.tweet = tweet
+                }
+            }
+        }
+    }
+    
 }
-
