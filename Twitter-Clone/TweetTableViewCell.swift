@@ -15,6 +15,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet weak var inlineImageView: UIImageView!
     
     @IBOutlet weak var replyCount: UILabel!
     @IBOutlet weak var retweetCount: UILabel!
@@ -39,15 +40,53 @@ class TweetTableViewCell: UITableViewCell {
         favCount.text = "\(tweet.favCount)"
         
         // Update image:
-        self.updateImage()
+        self.updateImage(imageview: self.profilePicImageView, imageUrl: tweet.profilePic)
+        self.updateImage(imageview: self.inlineImageView, imageUrl: tweet.inlinePic)
     }
     
     private func getTime() -> String {
         return "12m ago"
     }
     
-    private func updateImage() {
-        self.profilePicImageView.image = UIImage(named: "default_profile")
+    private func updateImage(imageview: UIImageView, imageUrl: String) {
+        // If valid url
+        
+        if verifyUrl(urlString: imageUrl) {
+            
+            imageview.image = nil
+            
+            let imageURL: URL = NSURL(string: imageUrl) as! URL
+            
+            URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, response, error) -> Void in
+                
+                if error != nil {
+                    return
+                }
+                
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let image = UIImage(data: data!)
+                    imageview.image = image
+                })
+                
+            }).resume()
+        } else {
+            if imageview == self.profilePicImageView {
+                imageview.image = UIImage(named: "default_profile")
+            }
+        }
     }
+    
+    func verifyUrl (urlString: String?) -> Bool {
+        //Check for nil
+        if let urlString = urlString, urlString != "" {
+            // create NSURL instance
+            if let url = NSURL(string: urlString) {
+                // check if your application can open the NSURL instance
+                return UIApplication.shared.canOpenURL(url as URL)
+            }
+        }
+        return false
+    }
+    
     
 }
