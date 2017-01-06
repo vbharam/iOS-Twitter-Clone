@@ -20,4 +20,6 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var retweetCount: UILabel!
     @IBOutlet weak var favCount: UILabel!
     
+    
+    
 }
