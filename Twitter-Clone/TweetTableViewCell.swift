@@ -20,6 +20,34 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var retweetCount: UILabel!
     @IBOutlet weak var favCount: UILabel!
     
+    var tweet: Tweet!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    func configureCell(tweet: Tweet) {
+        self.tweet = tweet
+        
+        nameLabel.text = tweet.name
+        handleLabel.text = tweet.handle
+        bodyLabel.text = tweet.body
+        timeLabel.text = self.getTime()
+        replyCount.text = "\(tweet.replyCount)"
+        retweetCount.text = "\(tweet.retweetCount)"
+        favCount.text = "\(tweet.favCount)"
+        
+        // Update image:
+        self.updateImage()
+    }
+    
+    private func getTime() -> String {
+        return "12m ago"
+    }
+    
+    private func updateImage() {
+        self.profilePicImageView.image = UIImage(named: "default_profile")
+    }
     
 }
