@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FeedViewController.swift
 //  Twitter-Clone
 //
 //  Created by Vishal Bharam on 1/6/17.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FeedViewController: UIViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
