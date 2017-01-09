@@ -36,7 +36,7 @@ class TweetTableViewCell: UITableViewCell {
         nameLabel.text = viewModel.name
         handleLabel.text = viewModel.handle
         bodyLabel.attributedText = viewModel.body
-        timeLabel.text = ""
+        timeLabel.text = viewModel.time
         replyCount.text = "\(viewModel.replyCount)"
         retweetCount.text = "\(viewModel.retweetCount)"
         favCount.text = "\(viewModel.favCount)"

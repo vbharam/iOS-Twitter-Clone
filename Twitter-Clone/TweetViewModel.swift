@@ -90,12 +90,12 @@ class TweetViewModel {
         }
     }
     
-    func getTime(time: String) -> String {
+    private func getTime(time: String) -> String {
         return "12m ago"
     }
     
-    func formattedBodyTextForTweet(body: String) -> NSMutableAttributedString {
-        var tweetBodyAttrString = NSMutableAttributedString(string: body)
+    private func formattedBodyTextForTweet(body: String) -> NSMutableAttributedString {
+        let tweetBodyAttrString = NSMutableAttributedString(string: body)
         
         
         if (self.tweet?.userMention.count)! > 0 {
