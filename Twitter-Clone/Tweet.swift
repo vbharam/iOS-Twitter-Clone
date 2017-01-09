@@ -9,64 +9,29 @@
 import Foundation
 
 class Tweet {
-    private var _name: String!
-    private var _handle: String!
-    private var _time: String!
-    private var _body: String!
-    private var _profilePic: String!
-    private var _inlinePic: String!
-    private var _replyCount: Int!
-    private var _retweetCount: Int!
-    private var _favCount: Int!
+    private var _jsonDict: NSDictionary!
     
-    
-    var name: String {
-        return _name == nil ? "" : _name
+    var jsonDict: NSDictionary {
+        return (_jsonDict == nil ? nil : _jsonDict)!
     }
     
-    var handle: String {
-        return _handle == nil ? "" : _handle
+    var userMention: NSArray {
+        var userMentionArray: [UserMention] = []
+        
+        if let entities = jsonDict["entities"] as? Dictionary<String, AnyObject> {
+            if let userMentions = entities["user_mentions"] as? [Dictionary<String, AnyObject>], userMentions.count > 0 {
+                for userDict in userMentions {
+                    let mention = UserMention(userId: userDict["id_str"] as! String, userScreenName: userDict["screen_name"] as! String, userFullName: userDict["name"] as! String, startIndex: userDict["indices"]![0] as! Int, endIndex: userDict["indices"]![1] as! Int)
+                    userMentionArray.append(mention)
+                }
+            }
+        }
+        
+        return userMentionArray as NSArray
     }
     
-    var time: String {
-        return _time == nil ? "" : _time
-    }
-    
-    var body: String {
-        return _body == nil ? "" : _body
-    }
-    
-    var profilePic: String {
-        return _profilePic == nil ? "" : _profilePic
-    }
-    
-    var inlinePic: String {
-        return _inlinePic == nil ? "" : _inlinePic
-    }
-    
-    var replyCount: Int {
-        return _replyCount == nil ? 0 : _replyCount
-    }
-    
-    var retweetCount: Int {
-        return _retweetCount == nil ? 0 : _retweetCount
-    }
-    
-    var favCount: Int {
-        return _favCount == nil ? 0 : _favCount
-    }
-    
-    
-    init(name: String, handle: String, time: String, body: String, profilePic: String, inlinePic: String, replyCount: Int, retweetCount: Int, favCount: Int) {
-        self._name = name
-        self._handle = handle
-        self._time = time
-        self._body = body
-        self._profilePic = profilePic
-        self._inlinePic = inlinePic
-        self._replyCount = replyCount
-        self._retweetCount = retweetCount
-        self._favCount = favCount
+    init(dictionary: NSDictionary) {
+        self._jsonDict = dictionary
     }
     
 }

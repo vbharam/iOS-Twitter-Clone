@@ -96,20 +96,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     for tweetDict in dictArray {
                         
-                        if let favCount = tweetDict["favorite_count"], let retweetCount = tweetDict["retweet_count"], let replyCount = tweetDict["retweet_count"], let message = tweetDict["text"], let time = tweetDict["created_at"], let user = tweetDict["user"] as? Dictionary<String, AnyObject>, let entities = tweetDict["entities"] as? Dictionary<String, AnyObject> {
-                            
-                            var inlineImageUrl: String = ""
-                            
-                            if let urls = entities["media"] as? [Dictionary<String, AnyObject>], urls.count > 0 {
-                                // Get the media URL if any
-                                inlineImageUrl = urls[0]["media_url_https"] as! String
-                            }
-                            
-                            
-                            let tweetData = Tweet(name: user["name"] as! String, handle: user["screen_name"] as! String, time: time as! String, body: message as! String, profilePic: user["profile_image_url_https"] as! String, inlinePic: inlineImageUrl, replyCount: replyCount as! Int, retweetCount: retweetCount as! Int, favCount: favCount as! Int)
-                            
-                            self.tweets.append(tweetData)
-                        }
+                        self.tweets.append(Tweet(dictionary: tweetDict as NSDictionary))
                     }
                 }
             completed()
@@ -121,8 +108,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TweetDetailVC" {
             if let detailsVC = segue.destination as? TweetDetailViewController {
-                if let tweet = sender as! Tweet? {
-                    print("Inline - \(tweet.inlinePic)")
+                if let tweet = sender as! Tweet? {                    
                     detailsVC.tweet = tweet
                 }
             }
