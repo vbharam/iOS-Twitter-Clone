@@ -31,29 +31,27 @@ class TweetTableViewCell: UITableViewCell {
     func configureCell(tweet: Tweet) {
         self.tweet = tweet
         
-        nameLabel.text = tweet.name
-        handleLabel.text = tweet.handle
-        bodyLabel.text = tweet.body
-        timeLabel.text = self.getTime()
-        replyCount.text = "\(tweet.replyCount)"
-        retweetCount.text = "\(tweet.retweetCount)"
-        favCount.text = "\(tweet.favCount)"
+        let viewModel = TweetViewModel(tweet: self.tweet)
         
-        // Update image:
-        self.updateImage(imageview: self.profilePicImageView, imageUrl: tweet.profilePic)
-        self.updateImage(imageview: self.inlineImageView, imageUrl: tweet.inlinePic)
+        nameLabel.text = viewModel.name
+        handleLabel.text = viewModel.handle
+        bodyLabel.attributedText = viewModel.body
+        timeLabel.text = ""
+        replyCount.text = "\(viewModel.replyCount)"
+        retweetCount.text = "\(viewModel.retweetCount)"
+        favCount.text = "\(viewModel.favCount)"
+        
+        // Update images:
+        self.updateImage(imageview: self.profilePicImageView, imageUrl: viewModel.profilePic)
+        
+        // if verifyUrl(urlString: viewModel.inlinePic) { self.load_image(urlString: viewModel.inlinePic) }
     }
     
-    private func getTime() -> String {
-        return "12m ago"
-    }
-    
-    private func updateImage(imageview: UIImageView, imageUrl: String) {
+    func updateImage(imageview: UIImageView, imageUrl: String) {
+        imageview.image = nil
+        
         // If valid url
-        
         if verifyUrl(urlString: imageUrl) {
-            
-            imageview.image = nil
             
             let imageURL: URL = NSURL(string: imageUrl) as! URL
             
@@ -65,6 +63,7 @@ class TweetTableViewCell: UITableViewCell {
                 
                 DispatchQueue.main.async(execute: { () -> Void in
                     let image = UIImage(data: data!)
+                    // print(imageview, image)
                     imageview.image = image
                 })
                 
@@ -75,6 +74,24 @@ class TweetTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    // Second method for image download + update
+    func load_image(urlString:String) {
+        self.inlineImageView.image = nil
+        
+        let imgURL = URL(string: urlString)!
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            
+            let imageData:NSData = NSData(contentsOf: imgURL)!
+            // When from background thread, UI needs to be updated on main_queue
+            DispatchQueue.main.async {
+                let image = UIImage(data: imageData as Data)
+                self.inlineImageView.image = image
+            }
+        }
+    }
+    
     
     func verifyUrl (urlString: String?) -> Bool {
         //Check for nil
