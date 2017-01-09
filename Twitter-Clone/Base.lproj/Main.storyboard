@@ -216,9 +216,8 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="442" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-WZ-ba7">
+                            <tableView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="442" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-WZ-ba7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="TweetTableViewCell" rowHeight="442" id="J75-CO-ABq" customClass="TweetTableViewCell" customModule="Twitter_Clone" customModuleProvider="target">
@@ -366,6 +365,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aBl-cZ-wkq" firstAttribute="top" secondItem="DC3-WZ-ba7" secondAttribute="bottom" id="2Yi-Ok-xKC"/>
+                            <constraint firstItem="DC3-WZ-ba7" firstAttribute="top" secondItem="E2O-sY-lXe" secondAttribute="bottom" id="eLl-LO-ldo"/>
+                            <constraint firstAttribute="trailing" secondItem="DC3-WZ-ba7" secondAttribute="trailing" id="imc-jz-ISf"/>
+                            <constraint firstItem="DC3-WZ-ba7" firstAttribute="leading" secondItem="0Pp-X7-uS0" secondAttribute="leading" id="mgx-id-xZx"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="DC3-WZ-ba7" id="jHm-Xr-x6N"/>
