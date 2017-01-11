@@ -22,10 +22,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.fetchTwitterData {
-            // self.tableView.reloadData()
-            self.setUpTableView()
-        }
+        self.setUpTableView()
+
+        
+        self.fetchTwitterData(user: "tim_cook", completed: {})
     }
 
     
@@ -47,6 +47,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.configureCell(tweet: tweet)
             
+            // Tap on the UserMention name to reload the page with the user:
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.handleTap(sender:)))
+            cell.bodyLabel.addGestureRecognizer(tapGesture)
+            
+            
             return cell
             
         } else {
@@ -57,6 +62,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let tweet: Tweet = tweets[indexPath.row]
+        performSegue(withIdentifier: "TweetDetailVC", sender: tweet)
         
         /*
          let detailsVC = TweetDetailViewController()
@@ -64,27 +70,35 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
          
          self.navigationController?.pushViewController(detailsVC, animated: true)
          */
-        
-        performSegue(withIdentifier: "TweetDetailVC", sender: tweet)
     }
     
     
-    func fetchTwitterData(completed: @escaping DownloadComplete) {
+    // Use this mothod to reload the selected user from the tweet
+    // Here, the input will be the
+    func handleTap(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            self.fetchTwitterData(user: "", completed: {})
+        }
+    }
+    
+    
+    func fetchTwitterData(user: String, completed: @escaping DownloadComplete) {
         
         let headers = [
             "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "OAuth oauth_consumer_key=\"PL4HWurqv2yBzTBHLZwQLgJnF\",oauth_token=\"718131356593590272-WuKsvhyD6CGbkVOBr42tVc5fLjjbidm\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1483938345\",oauth_nonce=\"ShwRT3\",oauth_signature=\"q6kGCjJEILBM2ssZ1IIb2XgIm24%3D\""
+            "Authorization": "OAuth oauth_consumer_key=\"PL4HWurqv2yBzTBHLZwQLgJnF\",oauth_token=\"718131356593590272-WuKsvhyD6CGbkVOBr42tVc5fLjjbidm\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1484126775\",oauth_nonce=\"IOKt6S\",oauth_signature=\"RUOevmz2HswvMjJJyUs03Ky70oo%3D\""
         ]
         
-        // let userTimeline_url = BASE_URL + USER_TIMELINE_URL
-        let userTimetine_url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=tim_cook"
+//        OAuth oauth_consumer_key="PL4HWurqv2yBzTBHLZwQLgJnF",oauth_token="718131356593590272-WuKsvhyD6CGbkVOBr42tVc5fLjjbidm",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1484126775",oauth_nonce="IOKt6S",oauth_signature="RUOevmz2HswvMjJJyUs03Ky70oo%3D"
         
-        let forcastURL = URL(string: userTimetine_url)
+        let userTimelineUrl = BASE_URL + USER_TIMELINE_URL + user
         
-        Alamofire.request(forcastURL!, headers: headers)
+        let twitterURL = URL(string: userTimelineUrl)
+        
+        Alamofire.request(twitterURL!, headers: headers)
             .responseJSON { response in
                 // print(response.request as Any)  // original URL request
-                // print(response.response as Any) // URL response
+                print(response.response as Any) // URL response
                 // print(response.data as Any)     // server data
                 // print(response.result as Any)   // result of response serialization
                 

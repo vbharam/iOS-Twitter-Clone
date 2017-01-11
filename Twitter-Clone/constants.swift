@@ -11,7 +11,7 @@ import UIKit
 
 let BASE_URL = "https://api.twitter.com/1.1/"
 
-let USER_TIMELINE_URL = "statuses/user_timeline.json"
+let USER_TIMELINE_URL = "statuses/user_timeline.json?screen_name="
 
 
 typealias DownloadComplete = () -> ()
