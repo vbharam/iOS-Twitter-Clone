@@ -42,13 +42,8 @@ class TweetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TweetTableViewCell", for: indexPath) as? TweetTableViewCell {
-            
             cell.configureCell(tweet: tweet)
-            
-            cell.timeLabel.text = tweet.time
-            
             return cell
-            
         } else {
             return UITableViewCell()
         }
